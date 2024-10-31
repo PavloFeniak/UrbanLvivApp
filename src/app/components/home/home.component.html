@@ -1,0 +1,47 @@
+
+<link href='https://fonts.googleapis.com/css?family=Helvetica Neue' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+
+
+
+<div class="page">
+  <div class="header">
+    <div class="left">
+      <h1>Good afternoon, Orest</h1>
+    </div>
+    <div class="header-center">
+      <div class="search-section">
+          <form class="search-bar-section">
+            <input type="search" class="search-bar-1" placeholder="Search..." aria-label="Search" id="search" >
+          </form>
+      </div>
+    </div>
+    <div class="left">
+      <div class="square">
+        <div class="square-raw"><h2>180</h2><h4>reports</h4></div>
+        <div class="square-column"><h3>Accepted</h3></div>
+      </div>
+      <div class="square">
+        <div class="square-raw"><h2>18</h2><h4>reports</h4></div>
+        <div class="square-column"><h3>In progress</h3></div>
+      </div>
+      <div class="square">
+        <div class="square-raw"><h2>25</h2><h4>reports</h4></div>
+        <div class="square-column"><h3>In queue</h3></div>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <div class="section-selector">
+      <button class="button-selector" id="selected"><h3>All reports</h3></button>
+      <button class="button-selector"><h6>Liked</h6></button>
+      <button class="button-selector"><h6>By you</h6></button>
+    </div>
+    <div class="report-card">
+      <app-report-smart></app-report-smart>
+      <app-report-smart></app-report-smart>
+      <app-report-smart></app-report-smart>
+      <app-report-smart></app-report-smart>
+    </div>
+  </div>
+</div>
