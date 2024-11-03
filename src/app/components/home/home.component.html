@@ -7,7 +7,7 @@
 <div class="page">
   <div class="header">
     <div class="left">
-      <h1>Good afternoon, Orest</h1>
+      <h1>Good afternoon, Pedro</h1>
     </div>
     <div class="header-center">
       <div class="search-section">
@@ -37,11 +37,10 @@
       <button class="button-selector"><h6>Liked</h6></button>
       <button class="button-selector"><h6>By you</h6></button>
     </div>
-    <div class="report-card">
-      <app-report-smart></app-report-smart>
-      <app-report-smart></app-report-smart>
-      <app-report-smart></app-report-smart>
-      <app-report-smart></app-report-smart>
+    <div class="report-card" >
+      <app-report-smart *ngFor="let myreport of reports"
+      [report]="myreport">
+      </app-report-smart>
     </div>
   </div>
 </div>

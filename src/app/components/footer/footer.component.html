@@ -1,24 +1,44 @@
 <div class="footer-section">
   <div class="left">
-    <button class="button">
-      <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 15.7637H2.81795M2.81795 15.7637H8.27181M2.81795 15.7637V7.99392C2.81795 7.50822 2.81795 7.26524 2.87701 7.03923C2.92934 6.83895 3.01592 6.64941 3.13219 6.47813C3.26339 6.28486 3.44573 6.12459 3.81126 5.80475L8.17578 1.98579C8.85341 1.39287 9.19225 1.09639 9.57384 0.983538C9.91033 0.884027 10.269 0.884027 10.6055 0.983538C10.9874 1.09647 11.3267 1.39323 12.0054 1.98705L16.3684 5.80475C16.734 6.12458 16.9164 6.28486 17.0476 6.47813C17.1638 6.64941 17.2498 6.83895 17.3021 7.03923C17.3611 7.26524 17.3616 7.50822 17.3616 7.99392V15.7637M8.27181 15.7637H11.9077M8.27181 15.7637V12.1278C8.27181 11.1238 9.08573 10.3099 10.0898 10.3099C11.0938 10.3099 11.9077 11.1238 11.9077 12.1278V15.7637M11.9077 15.7637H17.3616M17.3616 15.7637H19.1795" stroke="black" stroke-width="1.81795" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <button class="button button-home" (click)="checkButton(1)">
+      <div class="svg">
+        <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 15.7637H2.81795M2.81795 15.7637H8.27181M2.81795 15.7637V7.99392C2.81795 7.50822 2.81795 7.26524 2.87701 7.03923C2.92934 6.83895 3.01592 6.64941 3.13219 6.47813C3.26339 6.28486 3.44573 6.12459 3.81126 5.80475L8.17578 1.98579C8.85341 1.39287 9.19225 1.09639 9.57384 0.983538C9.91033 0.884027 10.269 0.884027 10.6055 0.983538C10.9874 1.09647 11.3267 1.39323 12.0054 1.98705L16.3684 5.80475C16.734 6.12458 16.9164 6.28486 17.0476 6.47813C17.1638 6.64941 17.2498 6.83895 17.3021 7.03923C17.3611 7.26524 17.3616 7.50822 17.3616 7.99392V15.7637M8.27181 15.7637H11.9077M8.27181 15.7637V12.1278C8.27181 11.1238 9.08573 10.3099 10.0898 10.3099C11.0938 10.3099 11.9077 11.1238 11.9077 12.1278V15.7637M11.9077 15.7637H17.3616M17.3616 15.7637H19.1795" stroke="black" stroke-width="1.81795" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="circle" *ngIf="homeButtonIsChecked">
+        <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="1.65839" cy="2.23535" r="1.36346" fill="black"/>
+        </svg>
+      </div>
+
+
     </button>
-    <button class="button">
+    <button class="button button-user" (click)="checkButton(2)">
       <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.3416 19.4666C17.3416 15.5591 14.1739 12.3915 10.2665 12.3915C6.35903 12.3915 3.19141 15.5591 3.19141 19.4666M10.2665 9.35934C8.03365 9.35934 6.22358 7.54927 6.22358 5.31643C6.22358 3.0836 8.03365 1.27353 10.2665 1.27353C12.4993 1.27353 14.3094 3.0836 14.3094 5.31643C14.3094 7.54927 12.4993 9.35934 10.2665 9.35934Z" stroke="black" stroke-width="2.02145" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
+      <div class="circle" *ngIf="userButtonIsChecked">
+        <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="1.65839" cy="2.23535" r="1.36346" fill="black"/>
+        </svg>
+      </div>
     </button>
-    <button class="button">
+    <button class="button button-info" (click)="checkButton(3)">
       <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9.25366 8.07782V12.5223M9.25366 16.9667C4.83538 16.9667 1.25366 13.385 1.25366 8.96671C1.25366 4.54843 4.83538 0.966705 9.25366 0.966705C13.6719 0.966705 17.2537 4.54843 17.2537 8.96671C17.2537 13.385 13.6719 16.9667 9.25366 16.9667ZM9.29793 5.41115V5.50004L9.20939 5.50021V5.41115H9.29793Z" stroke="black" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
+      <div class="circle" *ngIf="infoButtonIsChecked" >
+        <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="1.65839" cy="2.23535" r="1.36346" fill="black"/>
+        </svg>
+      </div>
     </button>
 
   </div>
   <div class="right">
-    <button class="button">
+    <button class="button button-add">
       <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.976074 19.3018C0.976074 9.26155 9.11532 0.966705 19.1556 0.966705C29.1959 0.966705 37.3351 9.26155 37.3351 19.3018C37.3351 29.3421 29.1959 37.6369 19.1556 37.6369C9.11532 37.6369 0.976074 29.3421 0.976074 19.3018Z" fill="black"/>
         <path d="M11.8606 20.0898H25.9497H26.4042" stroke="white" stroke-width="1.81795" stroke-linecap="round"/>
