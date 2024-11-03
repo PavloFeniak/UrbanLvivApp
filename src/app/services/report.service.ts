@@ -2,7 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
-import {Report} from "../models/report.model";
+import {MyReport} from "../models/report.model";
 import {catchError, map, Observable, Observer, of} from "rxjs";
 
 
@@ -15,7 +15,7 @@ export class ReportService implements OnInit {
   constructor(private router: Router, private http: HttpClient) {
   }
 
-  getReports(title?: string): Observable<Report[]>{
+  getReports(title?: string): Observable<MyReport[]>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });

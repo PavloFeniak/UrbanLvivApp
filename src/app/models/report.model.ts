@@ -1,4 +1,11 @@
-export class Report {
+export class MyReport {
+  get isDone(): boolean {
+    return this._isDone;
+  }
+
+  set isDone(value: boolean) {
+    this._isDone = value;
+  }
   constructor(
     private _id: number,
     private _title: string,
@@ -9,7 +16,7 @@ export class Report {
     private _location: string,
     private _timeOfCreation: string,
     private _priority: string,
-    private _isDote: boolean
+    private _isDone: boolean
   ) {}
 
 
@@ -85,13 +92,6 @@ export class Report {
     this._priority = value;
   }
 
-  get isDote(): boolean {
-    return this._isDote;
-  }
-
-  set isDote(value: boolean) {
-    this._isDote = value;
-  }
 }
 
 
