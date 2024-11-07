@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, Renderer2} from '@angular/core';
 import {ReportSmartComponent} from '../report-smart/report-smart.component';
 import {ReportService} from '../../services/report.service';
 import {ActivatedRoute} from '@angular/router';
@@ -14,11 +14,12 @@ import {CommonModule} from '@angular/common';
 })
 export class HomeComponent {
   reports: MyReport[] = []
-  constructor(private reportService: ReportService, private route: ActivatedRoute) {
+  constructor(private reportService: ReportService, private route: ActivatedRoute, private renderer: Renderer2, private el: ElementRef) {
   }
 
   ngOnInit(): void {
-    this.loadReports()
+    this.applyActiveClass('btn1', 'border1'); this.removeActiveClass('btn2','btn3')
+    //this.loadReports()
   }
   private loadReports(): void {
     this.reportService.getReports().subscribe(
@@ -50,6 +51,39 @@ export class HomeComponent {
       }
     );
   }
+  categorySelection(id: number): void{
 
+  }
+  applyActiveClass(buttonId: string, borderId: string): void {
+    const button = this.el.nativeElement.querySelector(`#${buttonId}`);
+    const border = this.el.nativeElement.querySelector(`#${borderId}`)
+    if (button) {
+      this.renderer.addClass(button, 'active');
+      this.renderer.setStyle(button, 'color', 'black');
+      this.renderer.setStyle(border, 'transform', 'scaleX(1)')
+
+    }
+  }
+
+  removeActiveClass(...buttonIds: string[]): void {
+    buttonIds.forEach(buttonId => {
+      const button = this.el.nativeElement.querySelector(`#${buttonId}`);
+      if (button) {
+        this.renderer.removeClass(button, 'active');
+        this.renderer.setStyle(button, 'border-bottom', 'none');
+        this.renderer.setStyle(button, 'color', 'rgba(0, 0, 0, 0.5)');
+
+      }
+    });
+  }
+  removeBorder(...buttonIds: string[]): void {
+    buttonIds.forEach(buttonId => {
+      const button = this.el.nativeElement.querySelector(`#${buttonId}`);
+      if (button) {
+        this.renderer.setStyle(button, 'transform', 'scaleX(0)');
+
+      }
+    });
+  }
 
 }

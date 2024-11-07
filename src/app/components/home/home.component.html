@@ -32,10 +32,20 @@
     </div>
   </div>
   <div class="center">
-    <div class="section-selector">
-      <button class="button-selector" id="selected"><h3>All reports</h3></button>
-      <button class="button-selector"><h6>Liked</h6></button>
-      <button class="button-selector"><h6>By you</h6></button>
+    <div class="section-selector" eve>
+      <button class="button-selector" id="btn1" (click)="applyActiveClass('btn1', 'border1'); removeActiveClass('btn2','btn3');removeBorder('border2', 'border3')">
+        <h3>All reports</h3>
+        <div class="border" id="border1"></div>
+      </button>
+      <button class="button-selector" id="btn2" (click)="applyActiveClass('btn2', 'border2'); removeActiveClass('btn1','btn3'); removeBorder('border1', 'border3')">
+        <h6>Liked</h6>
+        <div class="border" id="border2"></div>
+      </button>
+      <button class="button-selector" id="btn3" (click)="applyActiveClass('btn3', 'border3'); removeActiveClass('btn2','btn1'); removeBorder('border2', 'border1')">
+        <h6>By you</h6>
+        <div class="border" id="border3"></div>
+
+      </button>
     </div>
     <div class="report-card" >
       <app-report-smart *ngFor="let myreport of reports"
