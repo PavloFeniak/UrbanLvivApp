@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { ElementRef, Renderer2 } from '@angular/core';
 import {Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class FooterComponent {
   public userButtonIsChecked: boolean = false;
   public infoButtonIsChecked: boolean = false;
 
-  constructor(private renderer: Renderer2, private el: ElementRef, private router: Router) {
+  constructor(private renderer: Renderer2, private el: ElementRef, private router: Router, private userService: UserService) {
   }
   checkButton(idButton: number): void{
     if (idButton == 1) {
@@ -77,6 +78,10 @@ export class FooterComponent {
   }
 
   openUserPage() {
-    this.router.navigate(["/registration"])
+    if(this.userService.user?.id != null){
+      this.router.navigate(["/UserProfile"])
+
+    }
+    else  this.router.navigate(["/registration"])
   }
 }

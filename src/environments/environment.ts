@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  backendURL: "http://localhost:5093"
+  backendURL: "http://54.174.171.216/api"
 }

@@ -4,6 +4,7 @@ import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
 import {MyReport} from "../models/report.model";
 import {catchError, map, Observable, Observer, of} from "rxjs";
+import {ExportReportModel} from '../models/exportModels/exportReport.model';
 
 
 @Injectable({
@@ -11,7 +12,6 @@ import {catchError, map, Observable, Observer, of} from "rxjs";
 })
 export class ReportService implements OnInit {
   // private apiUrl = `http://54.174.171.216/api/Report/GetUserReports/1`;
-  private apiUrl = `http://54.174.171.216/api/Report/GetAllReports`;
 
 
   constructor(private router: Router, private http: HttpClient) {
@@ -21,9 +21,28 @@ export class ReportService implements OnInit {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.http.get<any>(`${this.apiUrl}`, { headers });
+    return this.http.get<any>("https://localhost:7148/api/Report/GetAllReports", { headers });
   }
 
+  uploadReport(report: ExportReportModel): void {
+      const body = {
+        title: report.title,
+        description: report.description,
+        image: report.imageUrl,
+        typeOfProblem: report.typeOfProblem,
+        creatorId: report.creatorId,
+        location: report.location
+      };
+      console.log(body)
+      this.http.post(environment.backendURL + '/Report/CreateReport', body).subscribe(
+        (response) => {
+          console.log('Image uploaded successfully:', response);
+        },
+        (error) => {
+          console.error('Error uploading image:', error);
+        }
+      );
+    }
 
 
   ngOnInit(): void {

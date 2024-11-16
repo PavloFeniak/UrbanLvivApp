@@ -36,7 +36,8 @@ export class HomeComponent {
             item.location,
             item.timeOfCreation,
             item.priority,
-            item.isDone
+            item.isDone,
+            item.officialSummary
           );
 
           if (item.imageUrl === '') {
