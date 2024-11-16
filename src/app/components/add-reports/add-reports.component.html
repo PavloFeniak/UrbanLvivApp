@@ -1,0 +1,82 @@
+
+<link href='https://fonts.googleapis.com/css?family=Helvetica Neue' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+
+
+
+
+<div class="body-section">
+  <div class="title"><h1>Tell us what a problem you`ve faced</h1></div>
+  <div class="center">
+    <div class="field-section">
+      <div><h2>Name of the problem</h2></div>
+      <div class="input-section">
+        <form class="input-bar-section">
+          <input type="text" class="input-bar-1" placeholder="E.g. Watter Leakage" id="problemName" >
+        </form>
+      </div>
+    </div>
+    <div class="field-section">
+      <div><h2>Where has it happened?</h2></div>
+      <div class="input-section">
+        <form class="input-bar-section">
+          <input type="text" class="input-bar-1" placeholder="E.g. Horodotska Street" id="problemPlace">
+        </form>
+      </div>
+    </div>
+    <div class="field-section">
+      <div><h2>Tag</h2></div>
+      <select class="option-bar" id="problemTag">
+        <option value="0">Problem is not selected</option>
+        <option value="1">Roads</option>
+        <option value="2">Garbage</option>
+        <option value="3">Electricity</option>
+        <option value="4">Watter Supply</option>
+        <option value="5">Sewage</option>
+        <option value="6">Parks</option>
+        <option value="7">Street Lightning</option>
+        <option value="8">Noise</option>
+        <option value="9">Traffic</option>
+        <option value="10">Environment</option>
+        <option value="11">Public Transport</option>
+        <option value="12">Infrastructure</option>
+        <option value="13">Health</option>
+        <option value="14">Animal Control</option>
+        <option value="15">Fire Hazard</option>
+        <option value="16">Other</option>
+        <option value="17">Unknown</option>
+      </select>
+    </div>
+    <div class="field-section">
+      <div><h2>Priority</h2></div>
+      <div>
+        <button class="button-priority"><h3>Low</h3></button>
+        <button class="button-priority"><h3>Medium</h3></button>
+        <button class="button-priority"><h3>High</h3></button>
+        <button class="button-priority"><h3>Urgent</h3></button>
+      </div>
+    </div>
+    <div class="field-section">
+      <div><h2>Photo</h2></div>
+      <div class="photos">
+        <div id="image-preview">
+          <img [src]="imageSrc" alt="Selected Image" *ngIf="imageSrc" style="width: 220px; height: auto; border-radius: 15px; margin-right: 20px" />
+        </div>
+        <label for="file-upload" class="add-photo">
+            <svg width="54" height="52" viewBox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M53.5 26C53.5 40.0656 41.6535 51.5 27 51.5C12.3465 51.5 0.5 40.0656 0.5 26C0.5 11.9344 12.3465 0.5 27 0.5C41.6535 0.5 53.5 11.9344 53.5 26Z" fill="#FAFAFA" stroke="#9E9E9E"/>
+              <line x1="7" y1="26.5" x2="48" y2="26.5" stroke="#9E9E9E"/>
+              <line x1="27.5" y1="47" x2="27.5" y2="6" stroke="#9E9E9E"/>
+            </svg>
+        </label>
+        <input id="file-upload" type="file" accept="image/*" (change)="onFileSelected($event)"/>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="submit-button" (click)="submitAddingReport()">Create A Report</div>
+
+  </div>
+</div>

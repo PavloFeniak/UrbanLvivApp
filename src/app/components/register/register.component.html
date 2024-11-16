@@ -1,0 +1,34 @@
+<link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+<div class="page">
+  <div class="container">
+    <div class="page-header">
+      <h1>UrbanLviv</h1>
+      <h2>Make Your City Better</h2>
+    </div>
+    <div class="login-form">
+      <h3 class="error-message" id="error" style="display: none;">The user has already been created</h3>
+      <form class="search-bar-section">
+        <input type="text" class="search-bar-1" placeholder="First name" aria-label="Search" id="first-name">
+      </form>
+      <form class="search-bar-section">
+        <input type="text" class="search-bar-1" placeholder="Last name" aria-label="Search" id="last-name">
+      </form>
+      <form class="search-bar-section">
+        <input type="email" class="search-bar-2" placeholder="Email" aria-label="Search" id="email">
+      </form>
+      <form class="search-bar-section">
+        <input type="text" class="search-bar-3" placeholder="Phone number" aria-label="Search" id="phoneNumber">
+      </form>
+      <form class="search-bar-section">
+        <input type="password" class="search-bar-4" placeholder="Password" aria-label="Search" id="password">
+      </form>
+      <input type="hidden" name="_csrf" value="${_csrf.token}">
+      <div><h2>Forgot password</h2></div>
+      <input type="submit" class="login-button" (click)="submitRegistration()"  value="Sing in" />
+      <h2>already have an account? <a [routerLink]="['/login']" class="activity-ref">Sing in here</a>
+      </h2>
+    </div>
+
+  </div>
+</div>
+
