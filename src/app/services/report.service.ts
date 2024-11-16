@@ -10,7 +10,9 @@ import {catchError, map, Observable, Observer, of} from "rxjs";
   providedIn: 'root' // Додає сервіс у глобальні провайдери
 })
 export class ReportService implements OnInit {
-  private apiUrl = `http://3.87.172.119/api/Report/GetUserReports/1`;
+  // private apiUrl = `http://54.174.171.216/api/Report/GetUserReports/1`;
+  private apiUrl = `http://54.174.171.216/api/Report/GetAllReports`;
+
 
   constructor(private router: Router, private http: HttpClient) {
   }

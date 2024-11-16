@@ -19,7 +19,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.applyActiveClass('btn1', 'border1'); this.removeActiveClass('btn2','btn3')
-    //this.loadReports()
+    this.loadReports()
   }
   private loadReports(): void {
     this.reportService.getReports().subscribe(
@@ -50,9 +50,6 @@ export class HomeComponent {
         console.error('Error loading reports:', error);
       }
     );
-  }
-  categorySelection(id: number): void{
-
   }
   applyActiveClass(buttonId: string, borderId: string): void {
     const button = this.el.nativeElement.querySelector(`#${buttonId}`);

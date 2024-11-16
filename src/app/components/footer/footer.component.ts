@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { ElementRef, Renderer2 } from '@angular/core';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class FooterComponent {
   public userButtonIsChecked: boolean = false;
   public infoButtonIsChecked: boolean = false;
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {
+  constructor(private renderer: Renderer2, private el: ElementRef, private router: Router) {
   }
   checkButton(idButton: number): void{
     if (idButton == 1) {
@@ -39,6 +40,12 @@ export class FooterComponent {
       this.applyActiveClass('3');
       this.removeActiveClass('1', '2');
     }
+    if (idButton == 0) {
+      this.homeButtonIsChecked = false;
+      this.userButtonIsChecked = false;
+      this.infoButtonIsChecked = false;
+      this.removeActiveClass('1', '2', '3');
+    }
 
   }
   applyActiveClass(buttonId: string): void {
@@ -55,5 +62,21 @@ export class FooterComponent {
         this.renderer.removeClass(button, 'active');
       }
     });
+  }
+
+  openHomePage() {
+    this.router.navigate(["/"])
+  }
+
+  openAddReportPage() {
+    this.router.navigate(["/add-report"])
+  }
+
+  openInfoPage() {
+    this.router.navigate(["/base-info"])
+  }
+
+  openUserPage() {
+    this.router.navigate(["/registration"])
   }
 }
