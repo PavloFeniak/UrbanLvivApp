@@ -31,7 +31,10 @@ export class UserService implements OnInit{
           if (response.data != null){
             console.log(response.data)
             this._user = new UserModel(response.data.userId, "user", "user", userEmail,"050555555",userPassword)
-            this.router.navigate(['/UserProfile']);
+            if(this._user.email == "admin@gmail.com"){
+              this.router.navigate(['/admin-home-page']);
+            }
+            else this.router.navigate(['/UserProfile']);
           }else {
             (document.getElementById("error") as HTMLElement).style.display = 'flex'
           }

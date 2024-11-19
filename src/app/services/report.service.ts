@@ -23,6 +23,9 @@ export class ReportService implements OnInit {
     });
     return this.http.get<any>("https://localhost:7148/api/Report/GetAllReports", { headers });
   }
+  getReportsByUser(userId: number): Observable<MyReport[]>{
+    return this.http.get<MyReport[]>(`https://localhost:7148/api/Report/GetUserReports/${userId}`);
+  }
 
   uploadReport(report: ExportReportModel): void {
       const body = {
@@ -44,7 +47,52 @@ export class ReportService implements OnInit {
       );
     }
 
+    getReportById(reportId: number): Observable<MyReport>{
+      return this.http.get<MyReport>(`https://localhost:7148/api/Admin/GetReportById/${reportId}`)
+    }
+  async compressImage(imageUrl: string, maxWidth: number, maxHeight: number, quality: number): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = imageUrl;
 
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        // Зберігаємо пропорції зображення
+        if (width > height) {
+          if (width > maxWidth) {
+            height = Math.floor(height * (maxWidth / width));
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = Math.floor(width * (maxHeight / height));
+            height = maxHeight;
+          }
+        }
+
+        // Створюємо canvas потрібного розміру
+        canvas.width = width;
+        canvas.height = height;
+
+        // Відображаємо зображення на canvas
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Стискаємо зображення
+          const compressedImage = canvas.toDataURL('image/jpeg', quality);
+          resolve(compressedImage);
+        } else {
+          reject('Canvas rendering context not found');
+        }
+      };
+
+      img.onerror = reject;
+    });
+  }
   ngOnInit(): void {
 
   }
