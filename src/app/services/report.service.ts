@@ -21,10 +21,10 @@ export class ReportService implements OnInit {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.http.get<any>("https://localhost:7148/api/Report/GetAllReports", { headers });
+    return this.http.get<any>(environment.backendURL+"/Report/GetAllReports", { headers });
   }
   getReportsByUser(userId: number): Observable<MyReport[]>{
-    return this.http.get<MyReport[]>(`https://localhost:7148/api/Report/GetUserReports/${userId}`);
+    return this.http.get<MyReport[]>(environment.backendURL+`/Report/GetUserReports/${userId}`);
   }
 
   uploadReport(report: ExportReportModel): void {
@@ -48,7 +48,7 @@ export class ReportService implements OnInit {
     }
 
     getReportById(reportId: number): Observable<MyReport>{
-      return this.http.get<MyReport>(`https://localhost:7148/api/Admin/GetReportById/${reportId}`)
+      return this.http.get<MyReport>(environment.backendURL+`/Admin/GetReportById/${reportId}`)
     }
   async compressImage(imageUrl: string, maxWidth: number, maxHeight: number, quality: number): Promise<string> {
     return new Promise((resolve, reject) => {
