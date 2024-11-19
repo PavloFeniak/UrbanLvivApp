@@ -1,2 +1,6 @@
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<app-footer *ngIf="!isAdminPage"></app-footer>
+
+<!--<app-admin-page></app-admin-page>-->
+
+<!--<app-report-details></app-report-details>-->

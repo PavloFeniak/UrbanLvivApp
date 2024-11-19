@@ -4,6 +4,7 @@ import {ReportService} from '../../services/report.service';
 import {ActivatedRoute} from '@angular/router';
 import {MyReport} from '../../models/report.model';
 import {CommonModule} from '@angular/common';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,22 @@ import {CommonModule} from '@angular/common';
 })
 export class HomeComponent {
   reports: MyReport[] = []
-  constructor(private reportService: ReportService, private route: ActivatedRoute, private renderer: Renderer2, private el: ElementRef) {
+
+  isAllReports: boolean = true;
+  isByYouReports: boolean = false;
+  reportsByUser: MyReport[] = [];
+  constructor(private reportService: ReportService, private userService: UserService, private route: ActivatedRoute, private renderer: Renderer2, private el: ElementRef) {
   }
 
   ngOnInit(): void {
-    this.applyActiveClass('btn1', 'border1'); this.removeActiveClass('btn2','btn3')
-    this.loadReports()
+    this.applyActiveClass('btn1', 'border1'); this.removeActiveClass('btn2','btn3');
+    this.loadReports();
+    this.loadReportsByUser();
+  }
+  loadReportsByUser(){
+    this.reportService.getReportsByUser(676681709).subscribe((reports: MyReport[]) => {
+      this.reportsByUser = reports;
+    });
   }
   private loadReports(): void {
     this.reportService.getReports().subscribe(
@@ -82,6 +93,16 @@ export class HomeComponent {
 
       }
     });
+  }
+  showAllReports(){
+    this.isAllReports = true;
+    this.isByYouReports = false;
+  }
+
+  showByYouReports(){
+
+      this.isAllReports = false;
+      this.isByYouReports = true;
   }
 
 }

@@ -32,8 +32,8 @@
     </div>
   </div>
   <div class="center">
-    <div class="section-selector" eve>
-      <button class="button-selector" id="btn1" (click)="applyActiveClass('btn1', 'border1'); removeActiveClass('btn2','btn3');removeBorder('border2', 'border3')">
+    <div class="section-selector" >
+      <button class="button-selector" id="btn1" (click)="applyActiveClass('btn1', 'border1'); removeActiveClass('btn2','btn3');removeBorder('border2', 'border3'); showAllReports()">
         <h3>All reports</h3>
         <div class="border" id="border1"></div>
       </button>
@@ -41,15 +41,20 @@
         <h6>Liked</h6>
         <div class="border" id="border2"></div>
       </button>
-      <button class="button-selector" id="btn3" (click)="applyActiveClass('btn3', 'border3'); removeActiveClass('btn2','btn1'); removeBorder('border2', 'border1')">
+      <button class="button-selector" id="btn3" (click)="applyActiveClass('btn3', 'border3'); removeActiveClass('btn2','btn1'); removeBorder('border2', 'border1'); showByYouReports() ">
         <h6>By you</h6>
         <div class="border" id="border3"></div>
 
       </button>
     </div>
-    <div class="report-card" >
+    <div class="report-card" *ngIf="isAllReports">
       <app-report-smart *ngFor="let myreport of reports"
       [report]="myreport">
+      </app-report-smart>
+    </div>
+    <div class="report-card" *ngIf="isByYouReports">
+      <app-report-smart *ngFor="let myreport of reportsByUser"
+                        [report]="myreport">
       </app-report-smart>
     </div>
   </div>

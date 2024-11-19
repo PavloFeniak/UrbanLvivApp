@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ReportService} from '../../services/report.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {MyReport} from "../../models/report.model";
 
@@ -18,7 +18,7 @@ export class ReportSmartComponent implements OnInit{
 
 
 
-  constructor(private reportService: ReportService, private route: ActivatedRoute) {
+  constructor(private reportService: ReportService, private router: Router) {
   }
   ngOnInit(): void {
     if (this.report && this.report.timeOfCreation) {
@@ -32,5 +32,8 @@ export class ReportSmartComponent implements OnInit{
   }
   HideShow(): void{
     this.isDescription = !this.isDescription
+  }
+  goToReportDetails(id: number) {
+    this.router.navigate(['/report-details', id]);
   }
 }

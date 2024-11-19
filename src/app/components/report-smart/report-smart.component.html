@@ -18,7 +18,7 @@
   </div>
   <div class="report-info">
     <div class="info-top">
-      <h2 class="title">{{report.title}}</h2>
+      <button class="no-styles" (click)="goToReportDetails(report.id)"><h2 class="title">{{report.title}}</h2></button>
       <button class="button" (click)="HideShow()">
         <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6.77772 0.888885L3.99995 3.66666L1.22217 0.888885" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
@@ -31,20 +31,20 @@
     <div class="info-row">
         <h4 class="info-item">
           <div class="circle">
-          <span class="icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5.99833 3.14283V5.99997H8.85547M5.99833 11.1428C3.158 11.1428 0.855469 8.8403 0.855469 5.99997C0.855469 3.15965 3.158 0.857117 5.99833 0.857117C8.83865 0.857117 11.1412 3.15965 11.1412 5.99997C11.1412 8.8403 8.83865 11.1428 5.99833 11.1428Z" stroke="black" stroke-width="1.14286" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg></span></div> {{this.formattedDate}}</h4>
+          </svg></div> {{this.formattedDate}}</h4>
         <h4 class="info-item">
           <div class="circle">
-          <span class="icon"><svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4.55988 0C3.45128 0 2.38808 0.440392 1.60418 1.22429C0.820274 2.0082 0.379883 3.0714 0.379883 4.18V4.48462C0.549114 6.77487 2.45014 8.61667 4.55988 11C6.7627 8.51231 8.73988 6.62821 8.73988 4.18C8.73988 3.0714 8.29949 2.0082 7.51559 1.22429C6.73169 0.440392 5.66849 0 4.55988 0ZM4.55988 2.17179C4.95775 2.1718 5.34667 2.28981 5.67744 2.51091C6.00821 2.73201 6.26597 3.04626 6.4181 3.41389C6.57022 3.78152 6.60988 4.18601 6.53206 4.57619C6.45423 4.96637 6.26242 5.32469 5.98089 5.60583C5.69936 5.88696 5.34077 6.07827 4.95048 6.15555C4.5602 6.23283 4.15576 6.1926 3.78834 6.03996C3.42092 5.88731 3.10704 5.62912 2.8864 5.29803C2.66577 4.96695 2.5483 4.57786 2.54886 4.18C2.5496 3.64713 2.76181 3.13634 3.13887 2.75981C3.51593 2.38328 4.02701 2.17179 4.55988 2.17179Z" fill="black"/>
-          </svg></span></div> {{report.location}}
+          </svg></div> {{report.location}}
         </h4>
         <h4 class="info-item">
           <div class="circle">
-          <span class="icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6 2.66667V1M8.36111 3.63889L9.55556 2.44444M9.33333 6H11M8.36111 8.36111L9.55556 9.55556M6 9.33333V11M3.63889 8.36111L2.44444 9.55556M2.66667 6H1M3.63889 3.63889L2.44444 2.44444" stroke="black" stroke-width="1.11111" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg></span></div> In Progress
+          </svg></div> In Progress
         </h4>
     </div>
   </div>

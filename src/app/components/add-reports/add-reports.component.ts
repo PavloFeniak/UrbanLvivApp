@@ -48,7 +48,7 @@ export class AddReportsComponent {
     console.log('User ID:', this.userService.user.id);
     this.reportService.uploadReport(new ExportReportModel(
       (document.getElementById('problemName') as HTMLInputElement).value,
-      "Skibidi Toilet",
+      "broken tree",
       this.selectedImage,
       (document.getElementById('problemTag') as HTMLSelectElement).selectedIndex,
       usid,
