@@ -1,21 +1,76 @@
-<div class="page-container">
-  <div class="left">
-    <div class="title-left">
-      <h1>Admin.</h1>
+
+<link href='https://fonts.googleapis.com/css?family=Helvetica Neue' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap&subset=cyrillic" rel="stylesheet">
+
+
+<div class="table-headers">
+  <h2 class="header-text" id="id">
+    #{{report.id}}
+  </h2>
+  <h2 class="header-text" id="request">
+    <div class="circle">
+      <svg width="20px" height="20px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ababab"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="#acacac"></path> <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="#ababab"></path> </g></svg>
     </div>
-    <button class="section-selector">Dashboard</button>
-    <button class="section-selector">Reports</button>
-    <button class="section-selector">Settings</button>
+    #{{report.creatorId}}
+  </h2>
+  <h2 class="header-text" id="subject">
+    {{getStringProblemType(report.typeOfProblem)}}
+  </h2>
+  <div id="priority">
+    <button class="button-priority" [disabled]="!areButtonsEnabled"
+            [ngStyle]="{
+    'background-color': getButtonBackgroundColor(report.priority),
+    'color': getButtonTextColor(report.priority)}"
+            (click)="showPriorityMenu()">
+      {{ getButtonLabel(report.priority) }}
+    </button>
+    <div class="menu-priority" *ngIf="isShowPriorityMenu">
+      <button class="button-in-row" (click)="changePriority('низький')"><h3>Low</h3></button>
+      <button class="button-in-row" (click)="changePriority('середній')"><h3>Medium</h3></button>
+      <button class="button-in-row" id="last-in-priority" (click)="changePriority('високий')" ><h3>High</h3></button>
+
+    </div>
   </div>
-  <div class="right">
-    <div class="top-right">
 
-    </div>
-    <div class="center-right">
+  <div  id="status">
+    <button class="button-status" [disabled]="!areButtonsEnabled"
+            [ngStyle]="{
+    'background-color': getButtonStatusBackgroundColor(report.processingStatus),
+    'color': getButtonStatusTextColor(report.processingStatus)}"
 
+            (click)="showStatusMenu()">{{ getButtonStatusLabel(report.processingStatus, report)}}</button>
+    <div class="menu-status" *ngIf="isShowStatusMenu">
+      <button class="button-in-row"  (click)="changeStatus(0)"><h3>New</h3></button>
+      <button class="button-in-row" (click)="changeStatus(1)"><h3>In Review</h3></button>
+      <button class="button-in-row" (click)="changeStatus(2)"><h3>Approved</h3></button>
+      <button class="button-in-row" (click)="changeStatus(3)"><h3>In Progress</h3></button>
+      <button class="button-in-row" (click)="changeStatus(4)"><h3>Completed</h3></button>
+      <button class="button-in-row" id="last-in-status" (click)="changeStatus(5)"><h3>Rejected</h3></button>
     </div>
-    <div class="bottom-right">
+  </div>
+  <h2 class="header-text" id="location">
+    {{report.location}}
+  </h2>
+  <div id="action">
+    <button class="button-more"  (click)="showMenu()">
+
+      <svg width="14px" height="14px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 8C4 9.10457 3.10457 10 2 10C0.895431 10 0 9.10457 0 8C0 6.89543 0.895431 6 2 6C3.10457 6 4 6.89543 4 8Z" fill="#575757"></path> <path d="M10 8C10 9.10457 9.10457 10 8 10C6.89543 10 6 9.10457 6 8C6 6.89543 6.89543 6 8 6C9.10457 6 10 6.89543 10 8Z" fill="#575757"></path> <path d="M14 10C15.1046 10 16 9.10457 16 8C16 6.89543 15.1046 6 14 6C12.8954 6 12 6.89543 12 8C12 9.10457 12.8954 10 14 10Z" fill="#575757"></path> </g></svg>
+    </button>
+    <button class="submit-button" *ngIf="areButtonsEnabled" (click)="submitReportChanges()">
+      <svg fill="#8f8f8f" width="18px" height="18px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#8f8f8f"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m16 0c8.836556 0 16 7.163444 16 16s-7.163444 16-16 16-16-7.163444-16-16 7.163444-16 16-16zm0 2c-7.7319865 0-14 6.2680135-14 14s6.2680135 14 14 14 14-6.2680135 14-14-6.2680135-14-14-14zm6.6208153 9.8786797c.3905243.3905242.3905243 1.0236892 0 1.4142135l-7.0710678 7.0710678c-.3626297.3626297-.9344751.3885319-1.3269928.0777064l-.0872208-.0777064-4.24264068-4.2426407c-.39052429-.3905242-.39052429-1.0236892 0-1.4142135.39052428-.3905243 1.02368928-.3905243 1.41421358 0l3.5348268 3.5348268 6.3646681-6.3632539c.3905243-.3905243 1.0236893-.3905243 1.4142136 0z"></path></g></svg>
+    </button>
+    <div class="square" *ngIf="isShow">
+      <button class="button-in-row" (click)="enableButtons()">
+        <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21C12 20.4477 12.4477 20 13 20H21C21.5523 20 22 20.4477 22 21C22 21.5523 21.5523 22 21 22H13C12.4477 22 12 21.5523 12 21Z" fill="#4c4a75"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7736 8.09994C22.3834 6.48381 22.315 4.36152 21.113 3.06183C20.5268 2.4281 19.6926 2.0233 18.7477 2.00098C17.7993 1.97858 16.8167 2.34127 15.91 3.09985C15.8868 3.11925 15.8645 3.13969 15.8432 3.16111L2.87446 16.1816C2.31443 16.7438 2 17.5051 2 18.2987V19.9922C2 21.0937 2.89197 22 4.00383 22H5.68265C6.48037 22 7.24524 21.6823 7.80819 21.1171L20.7736 8.09994ZM17.2071 5.79295C16.8166 5.40243 16.1834 5.40243 15.7929 5.79295C15.4024 6.18348 15.4024 6.81664 15.7929 7.20717L16.7929 8.20717C17.1834 8.59769 17.8166 8.59769 18.2071 8.20717C18.5976 7.81664 18.5976 7.18348 18.2071 6.79295L17.2071 5.79295Z" fill="#4c4a75"></path> </g></svg>
+        <h3>edit</h3></button>
+      <button class="button-in-row">
+        <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M154 260h568v700H154z" fill="#4c4a75"></path><path d="M624.428 261.076v485.956c0 57.379-46.737 103.894-104.391 103.894h-362.56v107.246h566.815V261.076h-99.864z" fill="#4c4a75"></path><path d="M320.5 870.07c-8.218 0-14.5-6.664-14.5-14.883V438.474c0-8.218 6.282-14.883 14.5-14.883s14.5 6.664 14.5 14.883v416.713c0 8.219-6.282 14.883-14.5 14.883zM543.5 870.07c-8.218 0-14.5-6.664-14.5-14.883V438.474c0-8.218 6.282-14.883 14.5-14.883s14.5 6.664 14.5 14.883v416.713c0 8.219-6.282 14.883-14.5 14.883z" fill="#152B3C"></path><path d="M721.185 345.717v-84.641H164.437z" fill="#4c4a75"></path><path d="M633.596 235.166l-228.054-71.773 31.55-99.3 228.055 71.773z" fill="#4c4a75"></path><path d="M847.401 324.783c-2.223 0-4.475-0.333-6.706-1.034L185.038 117.401c-11.765-3.703-18.298-16.239-14.592-27.996 3.706-11.766 16.241-18.288 27.993-14.595l655.656 206.346c11.766 3.703 18.298 16.239 14.592 27.996-2.995 9.531-11.795 15.631-21.286 15.631z" fill="#4c4a75"></path></g></svg>        <h3>delete</h3></button>
+      <button class="button-in-row" id="last" (click)="openReportDetails(report.id)">
+        <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#4c4a75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        <h3>view</h3></button>
 
     </div>
   </div>
+
 </div>

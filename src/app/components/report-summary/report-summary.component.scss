@@ -1,0 +1,149 @@
+.table-headers{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+}
+.circle{
+  width: 30px;
+  height: 30px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.square, .menu-status, .menu-priority{
+  width: 100px;
+  height: 90px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(224, 224, 224, 0.65);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 80%;
+  right: 40%;
+  z-index: 100;
+}
+.menu-status,.menu-priority{
+  right: 105%;
+  top: 0;
+  bottom: 100%;
+  height: 170px;
+}
+.menu-priority{
+  height: 90px;
+}
+.button-in-row{
+  width: 90%;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding-top:5px;
+  padding-bottom: 5px;
+  &:hover{
+    background-color: #f5f5f5;
+  }
+  &:active{
+    background-color: #efefef;
+  }
+}
+.button-more{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  align-items: center;
+}
+.submit-button{
+  width: 100px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+}
+.button-priority{
+  background-color: transparent;
+  border: none;
+  width: 60px;
+  font-weight: 700;
+  border-radius: 15px;
+  padding: 10px 30px 10px 30px;
+  min-width: 110px;
+
+}
+.button-status{
+  background-color: #F3FCF7;
+  width: 140px;
+  border: none;
+  padding: 10px 30px 10px 30px;
+  border-radius: 15px;
+  color: #2AC76A;
+  font-weight: 700;
+}
+h2{
+  margin: 0;
+  display: flex;
+  justify-content: start;
+  font-family: 'DM Sans', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 31px;
+  letter-spacing: 0.638095px;
+
+  color: #4c4a75;
+}
+h3{
+  margin: 0;
+  display: flex;
+  justify-content: start;
+  font-family: 'DM Sans', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.638095px;
+
+  color: #4c4a75;
+}
+#id{
+  width: 100px;
+}
+#request{
+  width: 200px;
+  gap: 10px;
+
+}
+#subject{
+  width: 300px
+}
+#priority{
+  width: 150px;
+  position: relative;
+}
+#status{
+  width: 200px;
+  position: relative;
+}
+#location{
+  width: 150px
+}
+#action{
+  width: 100px;
+  position: relative;
+  display: flex;
+  gap:35px;
+
+}
+#last, #last-in-status, #last-in-priority{
+  border-bottom: none;
+}
+
