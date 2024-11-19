@@ -1,0 +1,192 @@
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+<div class="info-container" *ngIf="report" >
+
+  <div class="after-header">
+    <div class="header-left">
+      <a class="references"><h4>Home / </h4></a>
+      <a class="references"><h4> {{getStringProblemType(report.typeOfProblem)}} / </h4></a>
+      <h5 class="references"> {{report.title}}</h5>
+    </div>
+    <div class="header-right">
+      <button class="button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round"/>
+        </svg>
+        <h4>Previous Report</h4>
+      </button>
+      <div class="line"></div>
+      <button class="button">
+        <h4>Next Report</h4>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="page-body">
+  <div class="left-section">
+    <div class="images" id="1">
+      <div class="side-images">
+        <img class="small-banner" [src]="report.imageUrl" alt="Profile Banner" id="10"/>
+        <img class="small-banner" [src]="report.imageUrl" alt="Profile Banner" id="11"/>
+        <img class="small-banner" [src]="report.imageUrl" alt="Profile Banner" id="12"/>
+      </div>
+      <div class="main-image-container">
+        <div class="image-container">
+          <button class="slider-left" (click)="plusDivs(-1)"></button>
+          <img class="banner" [src]="report.imageUrl" alt="Profile Banner"/>
+          <img class="banner" [src]="report.imageUrl" alt="Profile Banner" />
+          <img class="banner" [src]="report.imageUrl" alt="Profile Banner" />
+          <button class="slider-right" (click)="plusDivs(1)"></button>
+        </div>
+        <div class="snap-slider">
+          <button class="snap-slider-button" id="13"></button>
+          <button class="snap-slider-button" id="14"></button>
+          <button class="snap-slider-button" id="15"></button>
+        </div>
+      </div>
+
+    </div>
+    <!--    <div class="content-loaded">-->
+    <!--      <h4>Interested in this product?</h4>-->
+    <!--      <h4> Our person will consult you</h4>-->
+    <!--      <h4> Service is available from 10:00 to 20:00</h4>-->
+    <!--    </div>-->
+
+  </div>
+
+  <div class="body-right">
+    <div class="main-info">
+      <h1>{{report.title}}</h1>
+      <div class="grade">
+        <div class="stars">
+          <svg width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                  fill="#FFA500" stroke="#FFA500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                  fill="#FFA500" stroke="#FFA500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                  fill="#FFA500" stroke="#FFA500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                  fill="#FFA500" stroke="#FFA500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="15" height=15 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                  fill="#FFD700" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h5> (0 report rating)</h5>
+      </div>
+      <div class="price">
+        <div class="converted">
+          <h4> • </h4>
+        </div>
+      </div>
+      <div class="simple-description">
+        <h3>{{report.description  | slice:0:200 }}</h3>
+      </div>
+
+    </div>
+    <div class="description" id="2">
+      <button class="chapter" (click)="showFullDescription()">
+        <h2>Description</h2>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 5V19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 12H19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="full-description"  *ngIf ="isShow">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa fuga, illo impedit sed! Corporis
+          debitis, dolor dolorem error hic, id illo impedit iure necessitatibus omnis totam ut voluptatem?Lorem ipsum
+          dolor sit amet, consectetur adipisicing elit. Adipisci architecto minima molestias nam possimus provident,
+          quaerat quo soluta. Aperiam blanditiis dolore eum hic mollitia nihil quo recusandae repellat similique
+          voluptatum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa fuga, illo impedit sed!
+          Corporis debitis, dolor dolorem error hic, id illo impedit iure necessitatibus omnis totam ut voluptatem?Lorem
+          ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto minima molestias nam possimus provident,
+          quaerat quo soluta. Aperiam blanditiis dolore eum hic mollitia nihil quo recusandae repellat similique
+          voluptatum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa fuga, illo impedit sed!
+          Corporis debitis, dolor dolorem error hic, id illo impedit iure necessitatibus omnis totam ut voluptatem?Lorem
+          ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto minima molestias nam possimus provident,
+          quaerat quo soluta. Aperiam blanditiis dolore eum hic mollitia nihil quo recusandae repellat similique
+          voluptatum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa fuga, illo impedit sed!
+          Corporis debitis, dolor dolorem error hic, id illo impedit iure necessitatibus omnis totam ut voluptatem?Lorem
+          ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto minima molestias nam possimus provident,
+          quaerat quo soluta. Aperiam blanditiis dolore eum hic mollitia nihil quo recusandae repellat similique
+          voluptatum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa fuga, illo impedit sed!
+          Corporis debitis, dolor dolorem error hic, id illo impedit iure necessitatibus omnis totam ut voluptatem?Lorem
+          ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto minima molestias nam possimus provident,
+          quaerat quo soluta. Aperiam blanditiis dolore eum hic mollitia nihil quo recusandae repellat similique
+          voluptatum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa fuga, illo impedit sed!
+          Corporis debitis, dolor dolorem error hic, id illo impedit iure necessitatibus omnis totam ut voluptatem?Lorem
+          ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto minima molestias nam possimus provident,
+          quaerat quo soluta. Aperiam blanditiis dolore eum hic mollitia nihil quo recusandae repellat similique
+          voluptatum!</p>
+      </div>
+
+    </div>
+    <div class="description">
+      <button class="chapter" (click)="showFullInfo()">
+        <h2>Additional information</h2>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 5V19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 12H19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="full-description"  *ngIf ="isShowInfo">
+        <div class="circle">
+          <svg width="40px" height="40px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ababab"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="#acacac"></path> <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="#ababab"></path> </g></svg>
+        </div>
+        <div>
+          <div class="text-block"><h2> User: </h2><h3>User User</h3></div>
+          <div class="text-block"> <h2> Number: </h2><h3>+380501234567</h3></div>
+        </div>
+      </div>
+    </div>
+      <div class="description">
+        <button class="chapter" (click)="showAIResponse()">
+          <h2>AI Response</h2>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12H19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="AI-response" *ngIf="isShowAIResponse">
+          <div class="message-section">
+            <div class="ai-image">
+
+            </div>
+            <div class="message">
+              <p>{{report.officialSummary}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="description">
+        <button class="chapter" >
+          <h2>Reviews (0)</h2>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12H19" stroke="#7F7F7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+      </div>
+
+  </div>
+
+
+
+    <div class="review" id="3">
+
+    </div>
+    <div class="another-products" id="4"></div>
+  </div>
