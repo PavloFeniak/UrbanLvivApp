@@ -10,11 +10,12 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {AdminPageComponent} from './components/admin-page/admin-page.component';
 import {ReportDetailsComponent} from './components/report-details/report-details.component';
 import {NgIf} from '@angular/common';
+import {AdminDashboardComponent} from './components/admin-dashboard/admin-dashboard.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, FooterComponent, AddReportsComponent, ProfileComponent, AdminPageComponent, ReportDetailsComponent, NgIf],
+  imports: [RouterOutlet, HomeComponent, FooterComponent, AddReportsComponent, ProfileComponent, AdminPageComponent, ReportDetailsComponent, NgIf, AdminDashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
