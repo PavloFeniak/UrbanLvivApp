@@ -13,11 +13,12 @@ import {NgIf} from '@angular/common';
 import {AdminDashboardComponent} from './components/admin-dashboard/admin-dashboard.component';
 
 @Component({
-  selector: 'app-root',
+    selector: 'app-root',
   standalone: true,
+
   imports: [RouterOutlet, HomeComponent, FooterComponent, AddReportsComponent, ProfileComponent, AdminPageComponent, ReportDetailsComponent, NgIf, AdminDashboardComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'UrbanLvivApp';
@@ -27,7 +28,7 @@ export class AppComponent {
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.isAdminPage = event.url.includes('/admin-home-page');
+        this.isAdminPage = event.url.includes('/admin-home-page') || event.url.includes('/admin-dashboard');
       }
     });
     document.body.style.margin = "0";

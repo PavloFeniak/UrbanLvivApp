@@ -6,11 +6,12 @@ import {ExportReportModel} from '../../models/exportModels/exportReport.model';
 import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'app-add-reports',
+    selector: 'app-add-reports',
   standalone: true,
+
   imports: [CommonModule],
-  templateUrl: './add-reports.component.html',
-  styleUrls: ['./add-reports.component.scss']
+    templateUrl: './add-reports.component.html',
+    styleUrls: ['./add-reports.component.scss']
 })
 export class AddReportsComponent {
 

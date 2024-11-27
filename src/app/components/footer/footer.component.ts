@@ -6,11 +6,12 @@ import {UserService} from '../../services/user.service';
 
 
 @Component({
-  selector: 'app-footer',
+    selector: 'app-footer',
   standalone: true,
+
   imports: [CommonModule],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
   public homeButtonIsChecked: boolean = true;

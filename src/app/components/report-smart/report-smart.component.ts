@@ -5,11 +5,12 @@ import {CommonModule} from '@angular/common';
 import {MyReport} from "../../models/report.model";
 
 @Component({
-  selector: 'app-report-smart',
+    selector: 'app-report-smart',
   standalone: true,
+
   imports: [CommonModule],
-  templateUrl: './report-smart.component.html',
-  styleUrl: './report-smart.component.scss'
+    templateUrl: './report-smart.component.html',
+    styleUrl: './report-smart.component.scss'
 })
 export class ReportSmartComponent implements OnInit{
   @Input() report!: MyReport;

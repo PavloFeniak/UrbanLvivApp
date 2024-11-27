@@ -4,13 +4,14 @@ import {UserService} from '../../services/user.service';
 import {ExportUserModel} from '../../models/exportModels/export.user.model';
 
 @Component({
-  selector: 'app-register',
+    selector: 'app-register',
   standalone: true,
+
   imports: [
-    RouterLink
-  ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+        RouterLink
+    ],
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
 

@@ -3,13 +3,14 @@ import {NgIf} from "@angular/common";
 import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'app-profile',
+    selector: 'app-profile',
   standalone: true,
-    imports: [
+
+  imports: [
         NgIf
     ],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+    templateUrl: './profile.component.html',
+    styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
   get userService(): UserService {

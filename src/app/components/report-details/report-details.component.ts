@@ -5,14 +5,15 @@ import {NgIf, SlicePipe} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-report-details',
+    selector: 'app-report-details',
   standalone: true,
+
   imports: [
-    SlicePipe,
-    NgIf
-  ],
-  templateUrl: './report-details.component.html',
-  styleUrl: './report-details.component.scss'
+        SlicePipe,
+        NgIf
+    ],
+    templateUrl: './report-details.component.html',
+    styleUrl: './report-details.component.scss'
 })
 export class ReportDetailsComponent {
   reportId!: number;

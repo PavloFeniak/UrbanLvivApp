@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ReportAdminModel} from '../../models/report.admin.model';
 import {ReportService} from '../../services/report.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AdminService} from '../../services/admin.service';
 import {MyReport} from '../../models/report.model';
 import {NgForOf} from '@angular/common';
@@ -10,15 +10,16 @@ import {ReportSummaryComponent} from '../report-summary/report-summary.component
 
 
 @Component({
-  selector: 'app-admin-page',
+    selector: 'app-admin-page',
   standalone: true,
+
   imports: [
-    NgForOf,
-    ReportSmartComponent,
-    ReportSummaryComponent
-  ],
-  templateUrl: './admin-page.component.html',
-  styleUrl: './admin-page.component.scss'
+        NgForOf,
+        ReportSmartComponent,
+        ReportSummaryComponent
+    ],
+    templateUrl: './admin-page.component.html',
+    styleUrl: './admin-page.component.scss'
 })
 export class AdminPageComponent implements OnInit{
   reports: ReportAdminModel[] = [];
@@ -29,7 +30,7 @@ export class AdminPageComponent implements OnInit{
   public completed: number = 0;
   public rejected: number = 0;
   public totalReports: number = 0;
-  constructor(private adminService: AdminService, private route: ActivatedRoute){
+  constructor(private adminService: AdminService, private route: ActivatedRoute, private router: Router){
 
   }
   private loadReports(): void {
@@ -72,5 +73,8 @@ export class AdminPageComponent implements OnInit{
   ngOnInit(): void {
     this.loadReports();
     this.countAllTypeOfReports();
+  }
+  openDashboard(){
+    this.router.navigate(['/admin-dashboard'])
   }
 }

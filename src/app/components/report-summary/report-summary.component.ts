@@ -7,14 +7,15 @@ import {IRouter} from 'express';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-report-summary',
+    selector: 'app-report-summary',
   standalone: true,
+
   imports: [
-    NgStyle,
-    NgIf
-  ],
-  templateUrl: './report-summary.component.html',
-  styleUrl: './report-summary.component.scss'
+        NgStyle,
+        NgIf
+    ],
+    templateUrl: './report-summary.component.html',
+    styleUrl: './report-summary.component.scss'
 })
 export class ReportSummaryComponent implements OnInit{
   constructor(private adminService: AdminService, private router: Router) {

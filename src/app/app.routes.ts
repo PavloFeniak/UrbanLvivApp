@@ -7,6 +7,7 @@ import {LoginComponent} from './components/login/login.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ReportDetailsComponent} from './components/report-details/report-details.component';
 import {AdminPageComponent} from './components/admin-page/admin-page.component';
+import {AdminDashboardComponent} from './components/admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,7 +16,9 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'UserProfile', component: ProfileComponent},
   {path: 'report-details/:id', component: ReportDetailsComponent},
-  {path: 'admin-home-page', component: AdminPageComponent}
+  {path: 'admin-home-page', component: AdminPageComponent},
+  {path: 'admin-dashboard', component: AdminDashboardComponent}
+
 
 
 ];

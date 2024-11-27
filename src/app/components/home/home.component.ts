@@ -7,11 +7,12 @@ import {CommonModule} from '@angular/common';
 import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'app-home',
+    selector: 'app-home',
   standalone: true,
+
   imports: [CommonModule, ReportSmartComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   reports: MyReport[] = []

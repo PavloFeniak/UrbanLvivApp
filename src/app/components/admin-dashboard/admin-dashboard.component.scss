@@ -275,3 +275,11 @@ h5{
       #eeeeee calc(var(--progress) * 1%)
   );
 }
+.chart-square{
+  width: 800px;
+  height: 400px;
+  background-color: white;
+  padding: 15px;
+  margin-left: 20px;
+  margin-bottom: 40px;
+}
